@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>java_script tutorial</title>
+<link  rel="icon" href="programming.gif">
+</head>
+<body>
+<h1 id="heading">My first JavaScript</h1>
+<button type="button" onclick="document.getElementById('demo').innerHTML='Time  :'+Date()" ondblclick="displayName(this)">
+Click me to display Date and Time.</button>
+<p id="demo"> </p> 
+<img src="smiley.gif" alt="smiley" onmouseenter="mouseEnter(this)" onmouseleave="mouseLeave(this)" height="32px" width="32px">
+<p id="para">click me</p>
+<script>
+	function mouseEnter(x){
+		x.style.width="64px";
+		x.style.height="64px";
+	}
+	function mouseLeave(x){
+		x.style.width="32px";
+		x.style.height="32px";
+	}
+	function displayName(x){
+	
+		x.innerHTML="Ranga Sailaja";
+	}
+	document.getElementById("heading").addEventListener("mouseenter",enterHeading);
+	document.getElementById("heading").addEventListener("mouseleave",leaveHeading);
+	function enterHeading(){
+		document.getElementById("heading").style.color="red";
+	}
+	function leaveHeading(){
+		document.getElementById("heading").style.color="gray";
+	}
+document.getElementById("para").addEventListener("click",myFunction);
+document.getElementById("para").addEventListener("dblclick",myFunc);
+function myFunction(){
+	document.getElementById("para").innerHTML="YOU CLICKED ME at   "+Date();
+}
+function myFunc(){
+	document.getElementById("para").innerHTML="YOU DOUBLE CLICKED ME at   "+Date();
+}
+
+</script>
+</body>
+</html>
+

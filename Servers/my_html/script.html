@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Java Script</title>
+<link rel="stylesheets" href="display-icon.png">
+</head>
+<body>
+<head>
+<style>
+	body{
+	background-color:powderblue;
+	}
+	p{
+	color:red;
+	font-style:italic;
+	}
+</style>
+<p>--<h1 style="font-style:italic;">My First Java Script</h1>--</p>
+<button onclick="myFunction()">Click Me</button>
+
+<input type="button" value="back" onclick="BackFunction()"></input>
+
+<p name="demo">text is displayed here</p>
+<script>
+function myFunction(){
+	alert("Hello! I am an alert box!");
+}
+function BackFunction(){
+	document.getElementById("demo").innerHTML="text is displayed here";
+	document.getElementById("demo").style.fontSize="17.2px";
+	}
+function bulb(sw){
+	var pic;
+	if(sw==0){
+	pic="pic_bulboff.gif"
+	}else{
+	pic="pic_bulbon.gif"
+	}
+	document.getElementById("myImage").src=pic;
+}
+</script>
+<img id="myImage" src="pic_bulboff.gif" width="100" height="180">
+
+<p>
+<button type="button" onclick="bulb(1)">Light On</button>
+<button type="button" onclick="bulb(0)">Light Off</button>
+</p>
+<form action="http://www.google.co.in" method="get" target="_blank">
+Name: <input type="text" name="name">
+<input type="submit">
+</form>
+<form action="action_page.php">
+  Birthday:
+  <input type="date" name="bday">
+  <input type="submit">
+</form>
+<form action="action_page.php">
+  First name: <input type="text" name="fname"><br>
+  Last name: <input type="text" name="lname"><br>
+  <input type="submit" value="Submit"><br>
+  <input type="submit" formaction="demo_admin.asp"
+  value="Submit as admin">
+</form>
+</body>
+</html>
