@@ -36,7 +36,7 @@ def run():
     # with connection queue of length 1
     server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, \
                                 socket.IPPROTO_TCP)
-    server_sock.bind(('localhost', 8080))
+    server_sock.bind(('localhost', 8086))
     server_sock.listen(1)
 
     while True:
@@ -47,7 +47,12 @@ def run():
         # normalize endings). In real application usage, you should handle
         # all variations of line endings not to screw request body
         request = normalize_line_endings(recv_all(client_sock)) # hack again
-        request_head, request_body = request.strip().split('\n', 1)
+	print request
+        toks = request.split('\n',1)
+	if len(toks)==2:
+		request_head,request_body=toks
+	else:
+		request_head=toks
 
         # first line is request headline, and others are headers
         request_head = request_head.splitlines()
@@ -76,6 +81,8 @@ def run():
         response_body.append('</ul></body></html>')
 
         response_body_raw = ''.join(response_body)
+        fo = open("index_example2.html", "r+")
+        reponse_msg = fo.read()
 
         # Clearly state that connection will be closed after this response,
         # and specify length of response body
@@ -98,8 +105,7 @@ def run():
                                                         response_status_text))
         client_sock.send(response_headers_raw)
         client_sock.send('\n') # to separate headers from body
-        fo=open("index_example2.html","r+")
-        reponse_msg=fo.read()
+
         client_sock.send(reponse_msg)
 
         # and closing connection, as we stated before
